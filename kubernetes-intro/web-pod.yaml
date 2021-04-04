@@ -1,0 +1,24 @@
+apiVersion: v1 # Версия API
+kind: Pod # Объект, который создаем
+metadata:
+ name: nginx-custom
+ labels: # Метки в формате key: value
+   key: value
+spec: # Описание Pod
+
+ containers: 
+ - name: nginx-custom
+   image: otusdevops77/nginx-custom
+   volumeMounts:
+   - name: app
+     mountPath: /app
+ initContainers:
+  - name: init-myservice
+    image: busybox:1.31.0
+    command: ['sh', '-c', 'wget -O- https://tinyurl.com/otus-k8s-intro | sh']
+    volumeMounts:
+    - name: app
+      mountPath: /app
+ volumes:
+   - name: app
+     emptyDir: {}
