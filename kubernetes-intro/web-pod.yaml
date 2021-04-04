@@ -1,10 +1,10 @@
-apiVersion: v1 # Версия API
-kind: Pod # Объект, который создаем
+apiVersion: v1 
+kind: Pod 
 metadata:
  name: nginx-custom
- labels: # Метки в формате key: value
-   key: value
-spec: # Описание Pod
+ labels: 
+   app: web
+spec: 
 
  containers: 
  - name: nginx-custom
